@@ -1,0 +1,30 @@
+﻿<Window x:Class="LoneWolf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoneWolf"
+        mc:Ignorable="d"
+        Title="Lone Wolf" Height="280" Width="400">
+    <Grid>
+        <Button x:Name="btnRoll" Content="Roll" HorizontalAlignment="Left" Margin="20,31,0,0" VerticalAlignment="Top" Width="54" Click="btnRoll_Click"/>
+        <Label x:Name="lblRoll" Content="" HorizontalAlignment="Left" Margin="79,25,0,0" VerticalAlignment="Top" Height="29" Width="25" VerticalContentAlignment="Center" FontSize="18" FontFamily="Chiller" FontWeight="UltraBold" BorderBrush="Black" BorderThickness="1,1,1,1" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblRollTop" Content="Rolling:" HorizontalAlignment="Left" Margin="6,3,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCombatTop" Content="Combat Simulation
+:" HorizontalAlignment="Left" Margin="6,56,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLoneCS" HorizontalAlignment="Left" Margin="108,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtEnemyCS" HorizontalAlignment="Left" Margin="108,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtLoneEndurance" HorizontalAlignment="Left" Margin="108,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtEnemyEndurance" HorizontalAlignment="Left" Margin="108,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblEnemyCS" Content="Lone Wolf CS:" HorizontalAlignment="Left" Margin="16,83,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLoneCS" Content="Enemy CS:" HorizontalAlignment="Left" Margin="16,106,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSimulateFight" Content="Simulate Fight" HorizontalAlignment="Left" Margin="20,186,0,0" VerticalAlignment="Top" Click="btnSimulateFight_Click"/>
+        <Label x:Name="lblEnemyEndurance" Content="Lone Wolf END:" HorizontalAlignment="Left" Margin="16,129,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLoneEndurance" Content="Enemy END:" HorizontalAlignment="Left" Margin="16,152,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCombatResult" Content="" HorizontalAlignment="Left" Margin="119,183,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="btnCombatLog" Content="Combat Log" HorizontalAlignment="Left" Margin="20,211,0,0" VerticalAlignment="Top" Width="79.74" Click="btnCombatLog_Click"/>
+        <Label x:Name="lblCharacterSheet" Content="Character Sheet:" HorizontalAlignment="Left" Margin="190,3,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCharacter" Content="Open Character" HorizontalAlignment="Left" Margin="204,31,0,0" VerticalAlignment="Top" Width="91" Click="btnCharacter_Click"/>
+
+    </Grid>
+</Window>
