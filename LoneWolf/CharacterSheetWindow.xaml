@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="CharacterSheetWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Center" Margin="0,384,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMasteries" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.064,-0.015"/>
+
     </Grid>
 </Window>
