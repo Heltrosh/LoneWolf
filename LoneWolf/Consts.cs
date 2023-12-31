@@ -33,5 +33,29 @@ namespace LoneWolf
             (4, 4), (5, 4), (6, 3), (7, 2), (8, 1), (9, 1), (10, 0), (11, 0), (12, 0), (14, 0), (16, 0), (18, 0), (-1, 0),
             (5, 3), (6, 3), (7, 2), (8, 0), (9, 0), (10, 0), (11, 0), (12, 0), (14, 0), (16, 0), (18, 0), (-1, 0), (-1, 0)            
         ];
+        public static Dictionary<int, string> magnakaiDisciplines = new Dictionary<int, string> {
+            { 0, "Weaponmastery" },
+            { 1, "Animal Control" },
+            { 2, "Curing" },
+            { 3, "Invisibility" },
+            { 4, "Huntmastery" },
+            { 5, "Pathsmanship" },
+            { 6, "Psy-Surge" },
+            { 7, "Psy-Screen" },
+            { 8, "Nexus" },
+            { 9, "Divination"},
+        };
+        public static Dictionary<int, string> weaponMasteries = new Dictionary<int, string> {
+            { 0, "Dagger" },
+            { 1, "Spear" },
+            { 2, "Mace" },
+            { 3, "Short Sword" },
+            { 4, "Warhammer" },
+            { 5, "Sword" },
+            { 6, "Axes" },
+            { 7, "Bow" },
+            { 8, "Quarterstaff" },
+            { 9, "Broadsword"},
+        };
     }
 }

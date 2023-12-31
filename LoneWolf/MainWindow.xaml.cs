@@ -25,40 +25,15 @@ namespace LoneWolf
             combatLog = CombatLog.Instance;
         }
 
-        private int getRoll()
-        {
-            int[] values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-            int[] weights = [10, 10, 11, 11, 12, 12, 11, 11, 10, 10];
-
-            int totalWeight = weights.Sum();
-            int row=0;
-            int col=0;
-            for (int i = 0; i < 2; i++)
-            {
-                int randomNumber = new Random().Next(1, totalWeight + 1);
-                int cumulativeWeight = 0;
-                for (int j = 0; j < values.Length; j++)
-                {
-                    cumulativeWeight += weights[j];
-                    if (randomNumber <= cumulativeWeight)
-                    {
-                        if (i == 0)
-                            { row = values[j]; }
-                        else
-                            { col = values[j]; }
-                        break;
-                    }
-                }
-            }
-            return Consts.rollTable[row, col];
-        }
         private void btnRoll_Click(object sender, RoutedEventArgs e)
         {
-            lblRoll.Content = getRoll().ToString();
+            Roller roller = new();
+            lblRoll.Content = roller.getRoll().ToString();
         }
         private void playRound(int combatRatio, CombatTable combatTable, ref int enemyEndurance, ref int loneWolfEndurance)
         {
-            int roll = getRoll();
+            Roller roller = new();
+            int roll = roller.getRoll();
             Tuple<int, int> damage = combatTable.getCombatTableValue(roll, combatRatio);
             enemyEndurance -= damage.Item1 == -1 ? enemyEndurance : damage.Item1;
             loneWolfEndurance -= damage.Item2 == -1 ? loneWolfEndurance : damage.Item2;

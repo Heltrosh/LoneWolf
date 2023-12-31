@@ -25,5 +25,11 @@ namespace LoneWolf
             InitializeComponent();
             character = Character.Instance;
         }
+
+        private void btnNewCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterCreationWindow characterCreationWindow = new CharacterCreationWindow();
+            characterCreationWindow.Show();
+        }
     }
 }

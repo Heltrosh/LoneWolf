@@ -5,10 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoneWolf"
         mc:Ignorable="d"
-        Title="CharacterSheetWindow" Height="450" Width="800">
+        Title="Character Sheet" Height="570" Width="425">
     <Grid>
-        <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Center" Margin="0,384,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMasteries" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.064,-0.015"/>
+        <Label x:Name="lblDisciplines" Content="Magnakai Disciplines:" HorizontalAlignment="Left" Margin="6,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.064,-0.015" FontWeight="Bold"/>
+        <TextBox x:Name="txtDiscipline1" HorizontalAlignment="Left" Margin="40,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163" IsEnabled="False"/>
+        <Label x:Name="lblDiscipline1" Content="1:" HorizontalAlignment="Left" Margin="16,37,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblDiscipline2" Content="2:" HorizontalAlignment="Left" Margin="16,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDiscipline2" HorizontalAlignment="Left" Margin="40,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163" IsEnabled="False"/>
+        <Label x:Name="lblDiscipline3" Content="3:" HorizontalAlignment="Left" Margin="16,83,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDiscipline3" HorizontalAlignment="Left" Margin="40,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163" IsEnabled="False"/>
+        <Label x:Name="lblWeaponMasteries" Content="Weapon Masteries:" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.446,-0.05" FontWeight="Bold"/>
+        <Label x:Name="lblWeaponMastery1" Content="1:" HorizontalAlignment="Left" Margin="245,37,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtWeaponMastery1" HorizontalAlignment="Left" Margin="269,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label x:Name="lblWeaponMastery2" Content="2:" HorizontalAlignment="Left" Margin="245,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtWeaponMastery2" HorizontalAlignment="Left" Margin="269,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label x:Name="lblWeaponMastery3" Content="3:" HorizontalAlignment="Left" Margin="245,83,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtWeaponMastery3" HorizontalAlignment="Left" Margin="269,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label x:Name="lblBonuses" Content="Magnakai Lore-Circle Bonuses:" HorizontalAlignment="Left" Margin="6,110,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblBonusCS" Content="CS:" HorizontalAlignment="Left" Margin="16,137,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBonusEND" Content="END:" HorizontalAlignment="Left" Margin="16,160,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBonusCS" HorizontalAlignment="Left" Margin="58,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" IsEnabled="False"/>
+        <TextBox x:Name="txtBonusEND" HorizontalAlignment="Left" Margin="58,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30" IsEnabled="False"/>
+        <Label x:Name="lblCSEND" Content="Combat Score &amp; Endurance:" HorizontalAlignment="Left" Margin="235,110,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblCS" Content="CS:" HorizontalAlignment="Left" Margin="245,137,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblEND" Content="END:" HorizontalAlignment="Left" Margin="245,160,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCS" HorizontalAlignment="Left" Margin="287,141,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
+        <TextBox x:Name="txtEND" HorizontalAlignment="Left" Margin="287,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
+        <Label x:Name="lblWeapons" Content="Weapons:" HorizontalAlignment="Left" Margin="6,187,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblWeapon1" Content="1:" HorizontalAlignment="Left" Margin="16,214,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblWeapon2" Content="2:" HorizontalAlignment="Left" Margin="16,237,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtWeapon1" HorizontalAlignment="Left" Margin="40,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtWeapon2" HorizontalAlignment="Left" Margin="40,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblQuiver" Content="Quiver:" HorizontalAlignment="Left" Margin="235,187,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblQuiverAvail" Content="Available:" HorizontalAlignment="Left" Margin="245,214,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblQuiverArrows" Content="Arrows:" HorizontalAlignment="Left" Margin="245,237,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtQuiverArrows" HorizontalAlignment="Left" Margin="311,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
+        <CheckBox x:Name="chckQuiverAvail" Content="" HorizontalAlignment="Left" Margin="311,221,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBags" Content="Bags:" HorizontalAlignment="Left" Margin="6,264,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblBag1" Content="1:" HorizontalAlignment="Left" Margin="16,291,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag1" HorizontalAlignment="Left" Margin="40,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag2" Content="2:" HorizontalAlignment="Left" Margin="16,314,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag2" HorizontalAlignment="Left" Margin="40,318,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag3" Content="3:" HorizontalAlignment="Left" Margin="16,337,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag3" HorizontalAlignment="Left" Margin="40,341,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag4" Content="4:" HorizontalAlignment="Left" Margin="16,360,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag4" HorizontalAlignment="Left" Margin="40,364,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag5" Content="5:" HorizontalAlignment="Left" Margin="16,383,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag5" HorizontalAlignment="Left" Margin="40,387,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag6" Content="6:" HorizontalAlignment="Left" Margin="16,406,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag6" HorizontalAlignment="Left" Margin="40,410,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag7" Content="7:" HorizontalAlignment="Left" Margin="16,429,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag7" HorizontalAlignment="Left" Margin="40,433,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblBag8" Content="8:" HorizontalAlignment="Left" Margin="16,452,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBag8" HorizontalAlignment="Left" Margin="40,456,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="lblPouch" Content="Pouch:" HorizontalAlignment="Left" Margin="235,264,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblGold" Content="Gold:" HorizontalAlignment="Left" Margin="245,291,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtGold" HorizontalAlignment="Left" Margin="289,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
+        <Label x:Name="lblSpecialItems" Content="Special Items:" HorizontalAlignment="Left" Margin="235,318,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="txtSpecialItems" HorizontalAlignment="Left" Margin="255,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="125" AcceptsReturn="True"/>
+        <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Left" Margin="58,490,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Click="btnNewCharacter_Click"/>
+        <Button x:Name="btnSaveCharacter" Content="Save Character" HorizontalAlignment="Left" Margin="274,490,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
