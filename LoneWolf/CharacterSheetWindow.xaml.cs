@@ -29,7 +29,24 @@ namespace LoneWolf
         private void btnNewCharacter_Click(object sender, RoutedEventArgs e)
         {
             CharacterCreationWindow characterCreationWindow = new CharacterCreationWindow();
+            characterCreationWindow.Closed += characterCreationWindow_Closed;
             characterCreationWindow.Show();
+        }
+        private void characterCreationWindow_Closed(object? sender, EventArgs e)
+        {
+            //add logic
+            txtBag1.Text = "Hello World";
+        }
+
+        private void btnSaveCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            character.saveCharacter();
+        }
+
+        private void btnLoadCharacter_Click(object sender, RoutedEventArgs e)
+        {
+            character.loadCharacter();
+            //add logic
         }
     }
 }

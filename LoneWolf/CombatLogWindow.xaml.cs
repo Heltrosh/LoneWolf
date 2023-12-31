@@ -42,7 +42,7 @@ namespace LoneWolf
         {
             if (currentCombat <= 0)
                 return;
-            txtCombatLog.Text = String.Empty;
+            txtCombatLog.Text = "";
             currentCombat--;
             foreach (string line in combatLog.combats[currentCombat].lines)
             {
@@ -54,7 +54,7 @@ namespace LoneWolf
         {
             if (currentCombat == combatLog.combats.Count - 1)
                 return;
-            txtCombatLog.Text = String.Empty;
+            txtCombatLog.Text = "";
             currentCombat++;
             foreach (string line in combatLog.combats[currentCombat].lines)
             {

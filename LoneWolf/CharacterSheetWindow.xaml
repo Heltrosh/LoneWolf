@@ -64,7 +64,8 @@
         <Label x:Name="lblSpecialItems" Content="Special Items:" HorizontalAlignment="Left" Margin="235,318,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="txtSpecialItems" HorizontalAlignment="Left" Margin="255,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="125" AcceptsReturn="True"/>
         <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Left" Margin="58,490,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Click="btnNewCharacter_Click"/>
-        <Button x:Name="btnSaveCharacter" Content="Save Character" HorizontalAlignment="Left" Margin="274,490,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnSaveCharacter" Content="Save Character" HorizontalAlignment="Left" Margin="274,490,0,0" VerticalAlignment="Top" Click="btnSaveCharacter_Click"/>
+        <Button x:Name="btnLoadCharacter" Content="Button" HorizontalAlignment="Left" Margin="212,500,0,0" VerticalAlignment="Top" Click="btnLoadCharacter_Click"/>
 
     </Grid>
 </Window>

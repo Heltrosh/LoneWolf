@@ -85,12 +85,38 @@ namespace LoneWolf
         }
         private void btnCreateCharacter_Click(object sender, RoutedEventArgs e)
         {
-            string characterString = "";
-
             string[] disciplines = getSelectedDisciplines();
-            Dictionary<string, int> magnakaiDisciplines = Consts.magnakaiDisciplines.ToDictionary((i) => i.Value, (i) => i.Key);
-            foreach (string discipline in disciplines)
-                characterString += (magnakaiDisciplines[discipline]);
+            int combatScore = int.Parse(txtStartingCS.Text);
+            int endurance = int.Parse(txtStartingEND.Text);
+            int gold = int.Parse(txtStartingGold.Text);
+            string[] startingItems = new string[5];
+            for (int i = 1; i < 6; i++)
+            {
+                ComboBox comboBox = (ComboBox)this.FindName($"cmbStartingItem{i}");
+                ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+                startingItems[i - 1] = selectedItem.Content?.ToString() ?? "";
+            }
+            (bool, int) quiver = startingItems.Contains("Quiver") ? (true, 6) : (false, 0);
+            string[] weaponMasteries = {"", "", ""};
+            if (disciplines.Contains("Weaponmastery"))
+            {
+                for (int i = 1; i < 4; i++)
+                {
+                    ComboBox comboBox = (ComboBox)this.FindName($"cmbWeaponMastery{i}");
+                    ComboBoxItem selectedItem = (ComboBoxItem)comboBox.SelectedItem;
+                    weaponMasteries[i - 1] = selectedItem.Content?.ToString() ?? "";
+                }
+            }
+            string[] startingBagItems = {"Potion of Laumspur", "Tinderbox", "Rope", "4 Special Rations"};
+            string[] bag = startingBagItems
+            .Where(searchItem => startingItems.Contains(searchItem))
+            .SelectMany(matchedItem => Enumerable.Repeat(matchedItem, matchedItem == "4 Special Rations" ? 4 : 1))
+            .ToArray();
+            string[] specialItems = startingItems.Contains("Padded Leather Waistcoat") ? new[] {"Padded Leather Waistcoat +2END"} : new[] {""};
+            string[] startingWeapons = {"Quarterstaff", "Dagger", "Bow", "Sword", "Axe", "Warhammer"};
+            string[] weapons = startingItems.Intersect(startingWeapons).ToArray();
+            character.updateCharacter(disciplines, combatScore, endurance, gold, quiver, weaponMasteries, bag, specialItems, weapons);
+            this.Close();
         }
     }
 }
