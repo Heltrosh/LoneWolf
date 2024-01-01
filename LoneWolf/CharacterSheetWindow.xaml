@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LoneWolf"
         mc:Ignorable="d"
         Title="Character Sheet" Height="570" Width="425">
-    <Grid>
+    <Grid x:Name="gridMain">
         <Label x:Name="lblDisciplines" Content="Magnakai Disciplines:" HorizontalAlignment="Left" Margin="6,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.064,-0.015" FontWeight="Bold"/>
         <TextBox x:Name="txtDiscipline1" HorizontalAlignment="Left" Margin="40,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163" IsEnabled="False"/>
         <Label x:Name="lblDiscipline1" Content="1:" HorizontalAlignment="Left" Margin="16,37,0,0" VerticalAlignment="Top"/>
@@ -63,9 +63,9 @@
         <TextBox x:Name="txtGold" HorizontalAlignment="Left" Margin="289,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="40"/>
         <Label x:Name="lblSpecialItems" Content="Special Items:" HorizontalAlignment="Left" Margin="235,318,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="txtSpecialItems" HorizontalAlignment="Left" Margin="255,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Height="125" AcceptsReturn="True"/>
-        <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Left" Margin="58,490,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Click="btnNewCharacter_Click"/>
-        <Button x:Name="btnSaveCharacter" Content="Save Character" HorizontalAlignment="Left" Margin="274,490,0,0" VerticalAlignment="Top" Click="btnSaveCharacter_Click"/>
-        <Button x:Name="btnLoadCharacter" Content="Button" HorizontalAlignment="Left" Margin="212,500,0,0" VerticalAlignment="Top" Click="btnLoadCharacter_Click"/>
+        <Button x:Name="btnNewCharacter" Content="Create New Character" HorizontalAlignment="Left" Margin="26,490,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Click="btnNewCharacter_Click"/>
+        <Button x:Name="btnSaveCharacter" Content="Save Character" HorizontalAlignment="Left" Margin="184,490,0,0" VerticalAlignment="Top" Click="btnSaveCharacter_Click"/>
+        <Button x:Name="btnLoadCharacter" Content="Load Character" HorizontalAlignment="Left" Margin="302,490,0,0" VerticalAlignment="Top" Click="btnLoadCharacter_Click"/>
 
     </Grid>
 </Window>

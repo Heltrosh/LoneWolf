@@ -110,7 +110,11 @@ namespace LoneWolf
             string[] startingBagItems = {"Potion of Laumspur", "Tinderbox", "Rope", "4 Special Rations"};
             string[] bag = startingBagItems
             .Where(searchItem => startingItems.Contains(searchItem))
-            .SelectMany(matchedItem => Enumerable.Repeat(matchedItem, matchedItem == "4 Special Rations" ? 4 : 1))
+            .SelectMany(matchedItem =>
+            {
+                string modifiedItem = matchedItem == "4 Special Rations" ? "Special Rations" : matchedItem;
+                return Enumerable.Repeat(modifiedItem, matchedItem == "4 Special Rations" ? 4 : 1);
+            })
             .ToArray();
             string[] specialItems = startingItems.Contains("Padded Leather Waistcoat") ? new[] {"Padded Leather Waistcoat +2END"} : new[] {""};
             string[] startingWeapons = {"Quarterstaff", "Dagger", "Bow", "Sword", "Axe", "Warhammer"};

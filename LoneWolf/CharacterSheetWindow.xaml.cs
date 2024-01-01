@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,8 @@ namespace LoneWolf
         }
         private void characterCreationWindow_Closed(object? sender, EventArgs e)
         {
-            //add logic
-            txtBag1.Text = "Hello World";
+            cleanCharacterSheet();
+            displayCharacter();
         }
 
         private void btnSaveCharacter_Click(object sender, RoutedEventArgs e)
@@ -45,8 +46,62 @@ namespace LoneWolf
 
         private void btnLoadCharacter_Click(object sender, RoutedEventArgs e)
         {
+            cleanCharacterSheet();
             character.loadCharacter();
-            //add logic
+            displayCharacter();
+        }
+        private void cleanCharacterSheet()
+        {
+            foreach (Control ctrl in gridMain.Children)
+            {
+                if (ctrl.GetType() == typeof(TextBox))
+                    ((TextBox)ctrl).Text = String.Empty;
+                if (ctrl.GetType() == typeof(CheckBox))
+                    ((CheckBox)ctrl).IsChecked = false;
+            }
+        }
+
+        private void displayCharacter()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                TextBox disciplineTextBox = (TextBox)this.FindName($"txtDiscipline{i + 1}");
+                disciplineTextBox.Text = Consts.magnakaiDisciplines[character.disciplines[i]];
+            }
+            if (character.disciplines.Contains(0))
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    TextBox weaponMasteryTextBox = (TextBox)this.FindName($"txtWeaponMastery{i + 1}");
+                    weaponMasteryTextBox.Text = Consts.weaponMasteries[character.weaponMasteries[i]];
+                }
+            }
+            txtBonusCS.Text = character.bonuses.Item1.ToString();
+            txtBonusEND.Text = character.bonuses.Item2.ToString();
+            txtCS.Text = (character.combatScore + character.bonuses.Item1).ToString();
+            txtEND.Text = (character.endurance + character.bonuses.Item2).ToString();
+            txtWeapon1.Text = character.weapons[0] != "Empty" ? character.weapons[0] : "";
+            txtWeapon2.Text = character.weapons[1] != "Empty" ? character.weapons[1] : "";
+            chckQuiverAvail.IsChecked = character.quiver.Item1;
+            txtQuiverArrows.Text = character.quiver.Item2.ToString();
+            for (int i = 0; i < 8; i++)
+            {
+                TextBox bagTextBox = (TextBox)this.FindName($"txtBag{i + 1}");
+                bagTextBox.Text = character.bag[i] != "Empty" ? character.bag[i] : "";
+            }
+            txtGold.Text = character.gold.ToString();
+            for (int i = 0; i < 10; i++)
+            {
+                txtSpecialItems.Text += character.specialItems[i] != "Empty" ? character.specialItems[i] + "\n" : "";
+                if (character.specialItems[i].Contains('+'))
+                {
+                    int bonusIndex = character.specialItems[i].IndexOf('+') + 1;
+                    if (character.specialItems[i].Contains("END"))
+                        txtEND.Text = (int.Parse(txtEND.Text) + int.Parse(character.specialItems[i][bonusIndex].ToString())).ToString();
+                    else
+                        txtCS.Text = (int.Parse(txtCS.Text) + int.Parse(character.specialItems[i][bonusIndex].ToString())).ToString();
+                }
+            }
         }
     }
 }

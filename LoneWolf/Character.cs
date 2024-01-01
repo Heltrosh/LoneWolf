@@ -12,15 +12,16 @@ namespace LoneWolf
     {
         private static Character _instance = new Character();
         public static Character Instance { get { return _instance; } }
-        private int[] disciplines;
-        private int combatScore;
-        private int endurance;
-        private int gold;
-        private (bool, int) quiver;
-        private int[] weaponMasteries;
-        private string[] bag;
-        private string[] specialItems;
-        private string[] weapons;
+        public int[] disciplines { get; private set; }
+        public int combatScore { get; private set; }
+        public int endurance { get; private set; }
+        public int gold { get; private set; }
+        public (bool, int) quiver { get; private set; }
+        public int[] weaponMasteries { get; private set; }
+        public string[] bag { get; private set; }
+        public string[] specialItems { get; private set; }
+        public string[] weapons { get; private set; }
+        public (int, int) bonuses { get; private set; }
 
         private Character()
         {
@@ -33,6 +34,7 @@ namespace LoneWolf
             bag = new string[8];
             specialItems = new string[10];
             weapons = new string[2];
+            bonuses = (0, 0);
         }
         public void loadCharacter(string characterString)
         {
@@ -67,6 +69,7 @@ namespace LoneWolf
                 int itemEnd = characterString.IndexOf("WEP" + (i + 1)) - 1;
                 weapons[i] = characterString.Substring(itemStart, itemEnd - itemStart + 1);
             }
+            checkBonuses();
         }
         public void loadCharacter()
         {
@@ -101,6 +104,7 @@ namespace LoneWolf
             Array.Copy(weapons, this.weapons, weapons.Length);
             for (int i = weapons.Length; i < this.weapons.Length; i++)
                 this.weapons[i] = "Empty";
+            checkBonuses();
         }
         public void saveCharacter()
         {
@@ -136,6 +140,18 @@ namespace LoneWolf
             System.IO.Directory.CreateDirectory(Path.Combine(appData, "LoneWolf"));
             using (StreamWriter sw = new StreamWriter(Path.Combine(appData, "LoneWolf\\character.txt"), false))
                 sw.WriteLine(characterString);
+        }
+
+        private void checkBonuses()
+        {
+            bonuses = (0, 0);
+            HashSet<int> disciplinesSet = new HashSet<int>(disciplines);
+            if (disciplinesSet.Contains(0) && disciplinesSet.Contains(4))
+                bonuses = (bonuses.Item1 + 1, bonuses.Item2 + 2);
+            if (disciplinesSet.Contains(1) && disciplinesSet.Contains(2))
+                bonuses = (bonuses.Item1 + 0, bonuses.Item2 + 3);
+            if (disciplinesSet.SetEquals(new[] { 3, 4, 5 }))
+                bonuses = (bonuses.Item1 + 1, bonuses.Item2 + 3);
         }
 
     }
