@@ -116,10 +116,10 @@ namespace LoneWolf
                 return Enumerable.Repeat(modifiedItem, matchedItem == "4 Special Rations" ? 4 : 1);
             })
             .ToArray();
-            string[] specialItems = startingItems.Contains("Padded Leather Waistcoat") ? new[] {"Padded Leather Waistcoat +2END"} : new[] {""};
+            string[] specialItems = startingItems.Contains("Padded Leather Waistcoat") ? new[] {"Padded Leather Waistcoat +2END"} : [];
             string[] startingWeapons = {"Quarterstaff", "Dagger", "Bow", "Sword", "Axe", "Warhammer"};
             string[] weapons = startingItems.Intersect(startingWeapons).ToArray();
-            character.updateCharacter(disciplines, combatScore, endurance, gold, quiver, weaponMasteries, bag, specialItems, weapons);
+            character.createCharacter(disciplines, combatScore, endurance, gold, quiver, weaponMasteries, bag, specialItems, weapons);
             this.Close();
         }
     }

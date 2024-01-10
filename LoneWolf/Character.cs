@@ -106,6 +106,32 @@ namespace LoneWolf
                 this.weapons[i] = "Empty";
             checkBonuses();
         }
+
+        public void createCharacter(string[] disciplines, int combatScore, int endurance, int gold, (bool, int) quiver,
+                                        string[] weaponMasteries, string[] bag, string[] specialItems, string[] weapons)
+        {
+            Dictionary<string, int> magnakaiDisciplines = Consts.magnakaiDisciplines.ToDictionary((i) => i.Value, (i) => i.Key);
+            for (int i = 0; i < 3; i++)
+                this.disciplines[i] = magnakaiDisciplines[disciplines[i]];
+            this.gold = gold;
+            this.quiver = quiver;
+            Dictionary<string, int> weaponMasteriesDict = Consts.weaponMasteries.ToDictionary((i) => i.Value, (i) => i.Key);
+            weaponMasteriesDict.Add("", -1);
+            for (int i = 0; i < 3; i++)
+                this.weaponMasteries[i] = weaponMasteriesDict[weaponMasteries[i]];
+            Array.Copy(bag, this.bag, bag.Length);
+            for (int i = bag.Length; i < this.bag.Length; i++)
+                this.bag[i] = "Empty";
+            Array.Copy(specialItems, this.specialItems, specialItems.Length);
+            for (int i = specialItems.Length; i < this.specialItems.Length; i++)
+                this.specialItems[i] = "Empty";
+            Array.Copy(weapons, this.weapons, weapons.Length);
+            for (int i = weapons.Length; i < this.weapons.Length; i++)
+                this.weapons[i] = "Empty";
+            checkBonuses();
+            this.combatScore = combatScore + bonuses.Item1;
+            this.endurance = endurance + bonuses.Item2 + (this.specialItems[0] != "Empty" ? 2 : 0);
+        }
         public void saveCharacter()
         {
             string characterString = "";

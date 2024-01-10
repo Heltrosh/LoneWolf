@@ -41,6 +41,29 @@ namespace LoneWolf
 
         private void btnSaveCharacter_Click(object sender, RoutedEventArgs e)
         {
+            string[] disciplines = { txtDiscipline1.Text, txtDiscipline2.Text, txtDiscipline3.Text };
+            int combatScore = int.Parse(txtCS.Text); // TBD
+            int endurance = int.Parse(txtEND.Text); //TBD
+            int gold = int.Parse(txtGold.Text);
+            (bool, int) quiver = (chckQuiverAvail.IsChecked ?? false , int.Parse(txtQuiverArrows.Text));
+            string[] weaponMasteries = { "", "", "" };
+            if (disciplines.Contains("Weaponmastery"))
+                weaponMasteries = [txtWeaponMastery1.Text, txtWeaponMastery2.Text, txtWeaponMastery3.Text];
+            TextBox[] bagTextBoxes = { txtBag1, txtBag2, txtBag3, txtBag4, txtBag5, txtBag6, txtBag7, txtBag8 };
+            string[] bag = bagTextBoxes
+                .Where(textBox => !string.IsNullOrWhiteSpace(textBox.Text))
+                .Select(textBox => textBox.Text)
+                .ToArray();
+            string[] specialItems = txtSpecialItems.Text
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => s.Trim())
+                .ToArray();
+            TextBox[] weaponTextBoxes = { txtWeapon1, txtWeapon2 };
+            string[] weapons = weaponTextBoxes
+                .Where(textBox => !string.IsNullOrWhiteSpace(textBox.Text))
+                .Select(textBox => textBox.Text)
+                .ToArray();
+            character.updateCharacter(disciplines, combatScore, endurance, gold, quiver, weaponMasteries, bag, specialItems, weapons);
             character.saveCharacter();
         }
 
@@ -78,8 +101,8 @@ namespace LoneWolf
             }
             txtBonusCS.Text = character.bonuses.Item1.ToString();
             txtBonusEND.Text = character.bonuses.Item2.ToString();
-            txtCS.Text = (character.combatScore + character.bonuses.Item1).ToString();
-            txtEND.Text = (character.endurance + character.bonuses.Item2).ToString();
+            txtCS.Text = character.combatScore.ToString();
+            txtEND.Text = character.endurance.ToString();
             txtWeapon1.Text = character.weapons[0] != "Empty" ? character.weapons[0] : "";
             txtWeapon2.Text = character.weapons[1] != "Empty" ? character.weapons[1] : "";
             chckQuiverAvail.IsChecked = character.quiver.Item1;
@@ -93,14 +116,6 @@ namespace LoneWolf
             for (int i = 0; i < 10; i++)
             {
                 txtSpecialItems.Text += character.specialItems[i] != "Empty" ? character.specialItems[i] + "\n" : "";
-                if (character.specialItems[i].Contains('+'))
-                {
-                    int bonusIndex = character.specialItems[i].IndexOf('+') + 1;
-                    if (character.specialItems[i].Contains("END"))
-                        txtEND.Text = (int.Parse(txtEND.Text) + int.Parse(character.specialItems[i][bonusIndex].ToString())).ToString();
-                    else
-                        txtCS.Text = (int.Parse(txtCS.Text) + int.Parse(character.specialItems[i][bonusIndex].ToString())).ToString();
-                }
             }
         }
     }
