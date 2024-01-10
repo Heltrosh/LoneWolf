@@ -18,6 +18,7 @@ namespace LoneWolf
     {
         private CombatTable combatTable;
         CombatLog combatLog;
+        CharacterSheetWindow charWindow;
         public MainWindow()
         {
             InitializeComponent();
@@ -50,8 +51,17 @@ namespace LoneWolf
                 playRound(combatRatio, combatTable, ref enemyEndurance, ref loneWolfEndurance);
             }
             string winner = loneWolfEndurance > 0 ? "Lone Wolf" : "Enemy";
-            combatLog.addLine( winner + " wins the combat with " + (winner=="Lone Wolf" ? loneWolfEndurance : enemyEndurance) + " Endurance remaining." );
-            lblCombatResult.Content = "LW: " + loneWolfEndurance + ", E: " + enemyEndurance;
+            string resultText = winner + " wins the combat with " + (winner == "Lone Wolf" ? loneWolfEndurance : enemyEndurance) + " Endurance remaining.";
+            combatLog.addLine(resultText);
+            MessageBoxResult resultWindow = MessageBox.Show(resultText+"\nDo you want to update your character with the new Endurance value?", "Combat Result", MessageBoxButton.YesNo, MessageBoxImage.None, MessageBoxResult.No);
+            if (resultWindow == MessageBoxResult.Yes)
+            {
+                if (charWindow != null && charWindow.IsVisible)
+                {
+                    charWindow.txtEND.Text = loneWolfEndurance.ToString();
+                }
+
+            }
         }
 
         private void btnCombatLog_Click(object sender, RoutedEventArgs e)
@@ -62,7 +72,7 @@ namespace LoneWolf
 
         private void btnCharacter_Click(object sender, RoutedEventArgs e)
         {
-            CharacterSheetWindow charWindow = new CharacterSheetWindow();
+            charWindow = new CharacterSheetWindow();
             charWindow.Show();
         }
     }
